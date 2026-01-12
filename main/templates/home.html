@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Zabeeb Zaliz S | Software & Python Developer{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container hero-grid">
+        <div class="hero-text">
+            <h1>Zabeeb Zaliz S</h1>
+            <h2>Software & Python Developer</h2>
+            <p class="subtitle">
+                I build scalable backend applications using Python and Django. 
+                Currently expanding my expertise in Data Science and Generative AI.
+            </p>
+
+            <div class="hero-actions">
+                <a href="{% url 'projects' %}" class="btn primary">View Projects</a>
+                <a href="{% static 'resume/Zabeeb-Resume.pdf' %}" class="btn outline" target="_blank">Download Resume</a>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="code-card">
+                <pre><code>def developer():
+    skills = [
+        "Python",
+        "Django",
+        "APIs",
+        "Data Science",
+        "Generative AI"
+    ]
+    return "Building scalable solutions"
+
+print(developer())</code></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Highlights Section -->
+<section class="highlights">
+    <div class="container">
+        <div class="highlight-grid">
+            <div class="highlight-card">
+                <h3>Backend Development</h3>
+                <p>Designing robust Django applications with clean architecture, ORM optimization, and scalable backend logic.</p>
+            </div>
+
+            <div class="highlight-card">
+                <h3>Python Expertise</h3>
+                <p>Strong foundation in Python programming, debugging, reusable modules, and real-world application development.</p>
+            </div>
+
+            <div class="highlight-card">
+                <h3>Data Science & GenAI</h3>
+                <p>Currently learning data analysis, machine learning fundamentals, and generative AI concepts through structured training.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call To Action -->
+<section class="cta">
+    <div class="container">
+        <h2>Let’s build something meaningful</h2>
+        <p>I’m open to Python developer roles, backend opportunities, and collaborative projects.</p>
+        <a href="{% url 'contact' %}" class="btn primary">Contact Me</a>
+    </div>
+</section>
+
+{% endblock %}

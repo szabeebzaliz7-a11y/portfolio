@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Contact | Zabeeb Zaliz S{% endblock %}
+
+{% block content %}
+<section class="contact">
+    <div class="container">
+
+        <div class="contact-header">
+            <h1>Contact Me</h1>
+            <p class="contact-intro">
+                I’m open to Python developer roles, backend opportunities, and collaborative projects.
+            </p>
+        </div>
+
+        <div class="contact-grid">
+
+            <div class="contact-card">
+                <h2>Send a Message</h2>
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="success-message">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+
+
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea name="message" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn primary">Send Message</button>
+                </form>
+            </div>
+
+            <div class="contact-card">
+                <h2>Contact Information</h2>
+                <ul class="contact-info">
+                    <li><strong>Email:</strong> szabeebzaliz7@gmail.com</li>
+                    <li><strong>Location:</strong> Trivandrum, Kerala, India</li>
+                </ul>
+
+                <div class="contact-socials">
+                    <a href="https://github.com/szabeebzaliz7-a11y" target="_blank">GitHub</a>
+                    <a href="https://www.linkedin.com/in/zabeebzaliz" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

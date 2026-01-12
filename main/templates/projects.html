@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Projects | Zabeeb Zaliz S{% endblock %}
+
+{% block content %}
+
+<section class="projects">
+    <div class="container">
+        <div class="projects-header">
+            <h1>Projects</h1>
+            <p class="projects-intro">
+                A selection of projects that demonstrate my experience in Python backend development, 
+                frontend implementation, and my ongoing learning in Data Science and Generative AI.
+            </p>
+        </div>
+
+        <!-- Software Development Projects -->
+        <div class="project-section">
+            <h2>Software Development</h2>
+
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Doobiz – Business Networking Platform</h3>
+                    <p>
+                        A Django-based business networking and listing platform designed to connect businesses 
+                        and professionals. The application focuses on secure authentication, role-based access, 
+                        and efficient data retrieval.
+                    </p>
+                    <ul>
+                        <li>User authentication and authorization</li>
+                        <li>Role-based access control</li>
+                        <li>Search and filtering using Django ORM</li>
+                        <li>Responsive UI with Django Templates and Bootstrap</li>
+                    </ul>
+                    <div class="project-tech">Python · Django · ORM · HTML · CSS · Bootstrap</div>
+                    <div class="project-links">
+                        <a href="https://github.com/szabeebzaliz7-a11y" target="_blank">GitHub</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Online Painting E-Commerce Website</h3>
+                    <p>
+                        A frontend-driven e-commerce website developed to showcase and sell paintings. 
+                        The project emphasizes clean UI design, responsive layouts, and interactive 
+                        client-side functionality.
+                    </p>
+                    <ul>
+                        <li>Product listings with images and pricing</li>
+                        <li>Responsive layout using modern HTML and CSS</li>
+                        <li>Interactive UI using JavaScript</li>
+                        <li>Backend-ready structure for future Django integration</li>
+                    </ul>
+                    <div class="project-tech">HTML · CSS · JavaScript</div>
+                    <div class="project-links">
+                        <a href="https://github.com/szabeebzaliz7-a11y" target="_blank">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Science Projects -->
+        <div class="project-section">
+            <h2>Data Science (Learning Projects)</h2>
+            <div class="project-placeholder">
+                <p>
+                    I am currently building data analysis and machine learning projects as part of my 
+                    Data Science training. These projects will include exploratory data analysis, 
+                    Python-based data processing, and predictive modeling.
+                </p>
+            </div>
+        </div>
+
+        <!-- Generative AI Projects -->
+        <div class="project-section">
+            <h2>Generative AI (Learning Projects)</h2>
+            <div class="project-placeholder">
+                <p>
+                    I am actively learning Generative AI concepts and tools. Upcoming projects will focus on 
+                    AI-powered applications such as chatbots, intelligent assistants, and backend integrations 
+                    using modern AI APIs.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Zabeeb Zaliz S{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- SEO -->
+    <meta name="description" content="Zabeeb Zaliz S – Python Developer focusing on backend, data science, and generative AI.">
+    <meta name="keywords" content="Python Developer, Django, Backend, Data Science, Generative AI">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<header>
+    <nav class="navbar container">
+        <h2 class="logo">Zabeeb Zaliz S</h2>
+        <ul class="nav-links">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'projects' %}">Projects</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+        <!-- <button id="theme-toggle">🌙</button> -->
+    </nav>
+</header>
+
+{% block content %}{% endblock %}
+
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
