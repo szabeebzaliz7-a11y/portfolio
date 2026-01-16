@@ -31,6 +31,9 @@ ALLOWED_HOSTS = [
     'portfolio-woy7.onrender.com',
     'localhost',
     '127.0.0.1',
+    '15.206.179.139',
+    '34.207.119.45',
+    '3.110.144.49',
 ]
 
 
