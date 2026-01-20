@@ -1,85 +1,119 @@
 // ================================
-// Main JavaScript for Portfolio
+// Portfolio Main JavaScript
 // ================================
 
-// Navbar active link highlight
 (function () {
-    const links = document.querySelectorAll('.nav-links a');
+
+    /* ==============================
+       NAVBAR ACTIVE LINK (DJANGO SAFE)
+    ============================== */
+    const navLinks = document.querySelectorAll(".nav-links a");
     const currentPath = window.location.pathname;
 
-    links.forEach(link => {
-        if (link.getAttribute('href') === currentPath) {
-            link.classList.add('active');
+    navLinks.forEach(link => {
+        if (currentPath === link.getAttribute("href")) {
+            link.classList.add("active");
         }
     });
-})();
 
-// Smooth scroll for internal links
-(function () {
-    const anchors = document.querySelectorAll('a[href^="#"]');
 
-    anchors.forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+    /* ==============================
+       MOBILE MENU TOGGLE
+    ============================== */
+    const menuToggle = document.getElementById("menu-toggle");
+    const navMenu = document.querySelector(".nav-links");
+
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("show");
+            menuToggle.classList.toggle("open");
+        });
+
+        // Close menu on link click (mobile)
+        navLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                navMenu.classList.remove("show");
+                menuToggle.classList.remove("open");
+            });
+        });
+    }
+
+
+    /* ==============================
+       SMOOTH SCROLL
+    ============================== */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", e => {
+            const target = document.querySelector(anchor.getAttribute("href"));
             if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
+                e.preventDefault();
+                target.scrollIntoView({ behavior: "smooth" });
             }
         });
     });
-})();
 
-// Contact form UX enhancement
-(function () {
-    const form = document.querySelector('form');
-    if (!form) return;
 
-    form.addEventListener('submit', function () {
-        const button = form.querySelector('button[type="submit"]');
-        if (button) {
-            button.innerText = 'Sending...';
-            button.disabled = true;
-        }
-    });
-})();
-
-// Simple fade-in animation on scroll
-(function () {
-    const elements = document.querySelectorAll('.about-card, .project-card, .highlight-card');
-
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = 1;
-                entry.target.style.transform = 'translateY(0)';
+    /* ==============================
+       CONTACT FORM UX
+    ============================== */
+    const form = document.querySelector("form");
+    if (form) {
+        form.addEventListener("submit", () => {
+            const btn = form.querySelector("button[type='submit']");
+            if (btn) {
+                btn.textContent = "Sending...";
+                btn.disabled = true;
             }
         });
-    }, { threshold: 0.1 });
+    }
 
-    elements.forEach(el => {
-        el.style.opacity = 0;
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'all 0.6s ease';
-        observer.observe(el);
-    });
+
+    /* ==============================
+       FADE-IN ON SCROLL
+    ============================== */
+    const animatedItems = document.querySelectorAll(
+        ".about-card, .project-card, .highlight-card, .contact-card"
+    );
+
+    if (animatedItems.length) {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        animatedItems.forEach(item => {
+            item.classList.add("fade-up");
+            observer.observe(item);
+        });
+    }
+
+
+    /* ==============================
+       THEME TOGGLE (PERSISTENT)
+    ============================== */
+    const themeToggle = document.getElementById("theme-toggle");
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "light") {
+        document.body.classList.add("light");
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+            document.body.classList.toggle("light");
+
+            localStorage.setItem(
+                "theme",
+                document.body.classList.contains("light") ? "light" : "dark"
+            );
+
+            themeToggle.textContent =
+                document.body.classList.contains("light") ? "🌙" : "☀️";
+        });
+    }
+
 })();
-
-// Active nav
-document.querySelectorAll(".nav-links a").forEach(link => {
-    if (link.href === window.location.href) {
-        link.classList.add("active");
-    }
-});
-
-// Dark mode
-const toggle = document.getElementById("theme-toggle");
-if (toggle) {
-    toggle.onclick = () => {
-        document.body.classList.toggle("dark");
-        localStorage.setItem("theme",
-            document.body.classList.contains("dark") ? "dark" : "light");
-    };
-    if (localStorage.getItem("theme") === "dark") {
-        document.body.classList.add("dark");
-    }
-}
