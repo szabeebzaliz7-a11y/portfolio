@@ -35,7 +35,6 @@ ALLOWED_HOSTS = [
     '15.206.179.139',
     '34.207.119.45',
     '3.110.144.49',
-    '43.205.177.13',
 ]
 
 
@@ -129,11 +128,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = '/home/ubuntu/portfolio/collectstatic/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'collectstatic')
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
